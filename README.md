@@ -2,9 +2,7 @@
 
 [![GPL-3.0-or-later][gpl-badge]][gpl-license]
 
-Azure Active Directory PAM Module
-
-_This PAM module aims to provide Azure Active Directory authentication for Linux._
+_Azure Active Directory PAM Module._
 
 ##  Installation
 
