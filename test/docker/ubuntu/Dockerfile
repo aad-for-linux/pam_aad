@@ -1,4 +1,4 @@
-FROM cyberninjas/pam_aad:ubuntu
+FROM aad-for-linux/pam_aad:ubuntu
 
 RUN unset VERSION DEBVER && \
     apt update && apt install -y \
