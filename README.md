@@ -1,4 +1,6 @@
-# pam_aad [![Build Status][travis-badge]][travis-url] [![GPL-3.0-or-later][gpl-badge]][gpl-license] [![Download](https://api.bintray.com/packages/jnchi/aad/libpam-aad/images/download.svg) ](https://bintray.com/jnchi/aad/libpam-aad/_latestVersion) 
+# pam_aad
+
+[![GPL-3.0-or-later][gpl-badge]][gpl-license]
 
 Azure Active Directory PAM Module
 
@@ -53,5 +55,3 @@ Create the file ```/etc/pam_aad.conf``` and fill it with:
 
 [gpl-badge]: https://img.shields.io/badge/license-GPL-green.svg
 [gpl-license]: COPYING
-[travis-badge]: https://travis-ci.org/CyberNinjas/pam_aad.svg?branch=c-dev
-[travis-url]: https://travis-ci.org/CyberNinjas/pam_aad
