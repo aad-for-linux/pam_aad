@@ -1,4 +1,4 @@
-FROM cyberninjas/pam_aad:amazon-2018.03
+FROM aad-for-linux/pam_aad:amazon-2018.03
 
 RUN yum update -y && yum install -y \
         gdb \
