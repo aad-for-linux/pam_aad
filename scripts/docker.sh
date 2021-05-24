@@ -33,7 +33,7 @@ recursive_build() {
 }
 
 main() {
-  DEFAULT_IMAGE="cyberninjas/pam_aad"
+  DEFAULT_IMAGE="aad-for-linux/pam_aad"
   RELEASE=$(git describe --tags "$(git rev-list --tags --max-count=1)")
   export RELEASE
 
@@ -42,8 +42,6 @@ main() {
 
   # Build all testing docker images
   recursive_build ./test "${DEFAULT_IMAGE}" "${RELEASE}" 'testing'
-
-  sed "s/{{version}}/${RELEASE}/" .bintray.json.in > bintray.json
 }
 
 main
