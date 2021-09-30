@@ -5,7 +5,6 @@
 To install on Debian, the following package repositories,
 must be installed:
 
-- [Azure Active Directory for Debian][bintray]
 - [Debian Sid][sid]
 
 These can be installed via the following commands:
@@ -13,10 +12,6 @@ These can be installed via the following commands:
 ```terminal
 # Debian Sid
 echo "deb http://http.us.debian.org/debian sid main" >> /etc/apt/sources.list
-
-# Azure Active Directory for Debian
-echo "deb https://dl.bintray.com/jnchi/aad unstable main" | tee -a /etc/apt/sources.list.d/aad.list
-```
 
 ## Installation
 
@@ -51,5 +46,4 @@ apt install -y gnupg2
 apt-key adv --keyserver pgp.mit.edu --recv 67FF8700EB10F0B9
 ```
 
-[bintray]: https://bintray.com/jnchi/aad
 [sid]: https://www.debian.org/releases/sid
