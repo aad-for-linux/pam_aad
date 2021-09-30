@@ -5,7 +5,7 @@
 1) Fetch source code:
 
 ```terminal
-git clone https://github.com/CyberNinjas/pam_aad
+git clone https://github.com/CyberNinjas/pam_aad.git
 
 cd pam_aad
 ```
