@@ -2,7 +2,7 @@
 
 User provisioning is out of scope for this module. 
 
-See: [libnss_aad](https://github.com/CyberNinjas/libnss_aad)
+See: [libnss_aad](https://github.com/aad-for-linux/libnss_aad)
 
 ### Could not chdir to home directory /home/captain: No such file or directory
 
@@ -12,7 +12,7 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0022
 ```
 
 ## Username Mismatch
-> ...the claimed username is tested against the actual username. --[#3](https://github.com/CyberNinjas/pam_aad/issues/3)
+> ...the claimed username is tested against the actual username. --[#3](https://github.com/aad-for-linux/pam_aad/issues/3)
 
 Please ensure that the user you are attempting to authenticate as, matches the username in Azure Active Directory e.g. `ssh captain@pam_aad` will check that `captain@digipirates.onmicrosoft` actually exists.
 
@@ -34,7 +34,7 @@ Feb 21 14:36:52 935854ca0b1b sshd[19286]: PAM adding faulty module: pam_aad.so
 
 ## Performance issues with OpenVPN auth-pam plugin
 
-> Multiple users are unable to login using pam_aad in combination with the openvpn pam plugin. --[#39](https://github.com/CyberNinjas/pam_aad/issues/39)
+> Multiple users are unable to login using pam_aad in combination with the openvpn pam plugin. --[#39](https://github.com/aad-for-linux/pam_aad/issues/39)
 
 This is due to an issue with OpenVPN itself,
 
@@ -42,5 +42,5 @@ This is due to an issue with OpenVPN itself,
 
 An OpenVPN Azure Active Directory plugin has been created to address this issue.
 
-See: [openvpn-auth-aad](https://github.com/CyberNinjas/openvpn-auth-aad).
+See: [openvpn-auth-aad](https://github.com/aad-for-linux/openvpn-auth-aad).
 
