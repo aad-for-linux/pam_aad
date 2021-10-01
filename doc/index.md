@@ -5,7 +5,7 @@
 1) Fetch source code:
 
 ```terminal
-git clone https://github.com/CyberNinjas/pam_aad
+git clone https://github.com/aad-for-linux/pam_aad
 
 cd pam_aad
 ```
@@ -86,7 +86,7 @@ Create the file ```/etc/pam_aad.conf``` and fill it with:
 
   - Delete any existing permissions (The delegated permission, `Microsoft Graph (1)`, `User.Read` seems to be added by default).
 
-  **NOTE: This module makes use of the `Windows Azure Active Directory` API, not the `Microsoft Graph` API** ([#8](https://github.com/CyberNinjas/pam_aad/issues/8)).
+  **NOTE: This module makes use of the `Windows Azure Active Directory` API, not the `Microsoft Graph` API** ([#8](https://github.com/aad-for-linux/pam_aad/issues/8)).
 
   - Select "Add a permission", then under "Supported legacy APIs", choose `Azure Active Directory Graph`.
 
