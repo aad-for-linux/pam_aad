@@ -1,10 +1,10 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: pam_aad
-Upstream-Contact: Lucas Ramage <ramage.lucas@protonmail.com>
-Source: https://github.com/aad-for-linux/pam_aad
+Upstream-Contact: Infinite Omicron, LLC. <open.source@infinite-omicron.com>
+Source: Infinite Omicron, LLC. <open.source@infinite-omicron.com>
 
 Files: *
-Copyright: 2016-2019 CyberNinjas <info@cyberninjas.com>
+Copyright: 2016-2019 Infinite Omicron, LLC. <open.source@infinite-omicron.com>
            2019-2020 Lucas Ramage <ramage.lucas@protonmail.com>
            2021 Azure Active Directory for Linux <ramage.lucas@protonmail.com>
 License: GPL-3+
