@@ -8,16 +8,16 @@ pam-aad (0.0.3-1) UNRELEASED; urgency=medium
 
   * Enable external linking with -D_AAD_EXPORT
 
- -- Infinite Omicron, LLC. <open.source@infinite-omicron.com>  Wed, 19 Jun 2019 15:23:42 +0000
+ -- Lucas Ramage <lramage@cyberninjas.com>  Wed, 19 Jun 2019 15:23:42 +0000
 
 pam-aad (0.0.2-1) UNRELEASED; urgency=medium
 
   * New release.
 
- -- Infinite Omicron, LLC. <open.source@infinite-omicron.com>  Fri, 31 May 2019 17:27:25 +0000
+ -- Lucas Ramage <lramage@cyberninjas.com>  Fri, 31 May 2019 17:27:25 +0000
 
 pam-aad (0.0.1-1) UNRELEASED; urgency=medium
 
   * Initial release.
 
- -- Infinite Omicron, LLC. <open.source@infinite-omicron.com>  Mon, 06 May 2019 19:15:25 +0000
+ -- Lucas Ramage <lramage@cyberninjas.com>  Mon, 06 May 2019 19:15:25 +0000
