@@ -2,7 +2,7 @@
 
 User provisioning is out of scope for this module. 
 
-See: [libnss_aad](https://github.com/aad-for-linux/libnss-aad)
+See: [libnss_aad](https://github.com/CyberNinjas/libnss_aad)
 
 ### Could not chdir to home directory /home/captain: No such file or directory
 
