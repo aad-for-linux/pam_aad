@@ -482,7 +482,7 @@ STATIC int azure_authenticator(pam_handle_t * pamh, const char *user)
     } else {
         prompt = sdscat(prompt, USER_PROMPT_ENTER);
         prompt = sdscat(prompt, "\n");
-        (void) pam_prompt(pamh, PAM_PROMPT_ECHO_OFF, NULL, prompt);
+        (void) pam_prompt(pamh, PAM_PROMPT_ECHO_OFF, NULL, "%s", prompt);
     }
 
     auth_bearer_request(&data, client_id, tenant, d_code, json_data,
