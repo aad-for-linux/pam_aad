@@ -5,7 +5,7 @@
 1) Fetch source code:
 
 ```terminal
-git clone https://github.com/CyberNinjas/pam_aad.git
+git clone https://github.com/aad-for-linux/pam_aad.git
 
 cd pam_aad
 ```
@@ -141,4 +141,4 @@ Example:
 
 ## See also
 
-- [puppet-aad](https://github.com/Jnchi/puppet-aad)
+- [puppet](https://github.com/aad-for-linux/puppet)
