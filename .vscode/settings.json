@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "pam_modules.h": "c",
+        "pam_appl.h": "c"
+    }
+}
