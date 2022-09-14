@@ -1,0 +1,24 @@
+name: build
+
+on:
+ push:
+   branches: [ master ]
+ pull_request:
+   branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: addnab/docker-run-action@v3
+        with: 
+            options: -v ${{ github.workspace }}:/usr/src/pam_aad
+            image: ghcr.io/aad-for-linux/pam_aad:ubuntu
+            run: |
+              cd /usr/src/pam_aad
+              ./bootstrap.sh
+              ./configure
+              make
+
