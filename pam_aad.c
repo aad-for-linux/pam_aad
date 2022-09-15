@@ -22,7 +22,7 @@
 #define SUBJECT "Your one-time passcode for signing in via Azure Active Directory"
 #define TTW 5                   /* time to wait in seconds */
 #define USER_AGENT "azure_authenticator_pam/1.0"
-#define USER_PROMPT "\n\nEnter the code at https://aka.ms/devicelogin."
+#define USER_PROMPT "\n\nEnter the code at https://aka.ms/devicelogin"
 
 #ifndef _AAD_EXPORT
 #define STATIC static
@@ -139,7 +139,7 @@ STATIC char *get_message_id(void)
 }
 
 STATIC json_t *curl(const char *endpoint, const char *post_body,
-                    struct curl_slist * headers, bool debug)
+                    struct curl_slist *headers, bool debug)
 {
     CURL *curl;
     CURLcode res;
@@ -205,7 +205,7 @@ STATIC void auth_bearer_request(struct ret_data *data,
 
     for (;;) {
         nanosleep((const struct timespec[]) { {
-                  TTW, 0}
+                                               TTW, 0 }
                   }, NULL);
         json_data = curl(endpoint, post_body, NULL, debug);
 
@@ -312,7 +312,9 @@ STATIC int verify_group(const char *auth_token, const char *group_id,
     return ret;
 }
 
-STATIC int notify_user(const char *to_addr, const char *from_addr, const char *message, const char *smtp_server, bool debug)
+STATIC int notify_user(const char *to_addr, const char *from_addr,
+                       const char *message, const char *smtp_server,
+                       bool debug)
 {
     CURL *curl;
     CURLcode res = CURLE_OK;
@@ -378,10 +380,11 @@ STATIC int notify_user(const char *to_addr, const char *from_addr, const char *m
     return (int) res;
 }
 
-STATIC int azure_authenticator(const char *user)
+STATIC int azure_authenticator(pam_handle_t * pamh, const char *user)
 {
     jwt_t *jwt;
     bool debug = DEBUG;
+    bool send_email = false;
     const char *client_id, *group_id, *tenant,
         *domain, *u_code, *d_code, *ab_token, *tenant_addr, *smtp_server;
 
@@ -447,11 +450,9 @@ STATIC int azure_authenticator(const char *user)
     }
 
     if (json_object_get(config, "smtp_server")) {
+        send_email = true;
         smtp_server =
             json_string_value(json_object_get(config, "smtp_server"));
-    } else {
-        fprintf(stderr, "error with Domain in JSON\n");
-        return ret;
     }
 
     sds user_addr = sdsnew(user);
@@ -468,16 +469,20 @@ STATIC int azure_authenticator(const char *user)
     sds prompt = sdsnew(CODE_PROMPT);
     prompt = sdscat(prompt, u_code);
     prompt = sdscat(prompt, USER_PROMPT);
-    notify_user(user_addr, tenant_addr, prompt, smtp_server, debug);
 
-    auth_bearer_request(&data, client_id, tenant, d_code, json_data,
-                        debug);
+    if (send_email) {
+        prompt = sdscat(prompt, ", then press enter.");
+        notify_user(user_addr, tenant_addr, prompt, smtp_server, debug);
+    } else {
+        prompt = sdscat(prompt, ".");
+        (void) pam_prompt(pamh, PAM_PROMPT_ECHO_OFF, NULL, "%s", prompt);
+    }
 
+    auth_bearer_request(&data, client_id, tenant,
+                        d_code, json_data, debug);
     curl_global_cleanup();
-
     ab_token = data.auth_bearer;
     jwt_decode(&jwt, ab_token, NULL, 0);
-
     if (verify_user(jwt, user_addr) == 0
         && verify_group(ab_token, group_id, debug) == 0) {
         ret = EXIT_SUCCESS;
@@ -486,35 +491,34 @@ STATIC int azure_authenticator(const char *user)
     json_decref(json_data);
     json_decref(config);
     jwt_free(jwt);
-
     return ret;
 }
 
 
-PAM_EXTERN int pam_sm_authenticate(pam_handle_t * pamh, int flags,
-                                   int argc, const char **argv)
+PAM_EXTERN int pam_sm_authenticate(pam_handle_t *
+                                   pamh, int flags, int argc, const char
+                                   **argv)
 {
     const char *user;
     int ret = PAM_AUTH_ERR;
-
     if (pam_get_user(pamh, &user, NULL) != PAM_SUCCESS) {
         fprintf(stderr, "pam_get_user(): failed to get a username\n");
         return ret;
     }
 
-    if (azure_authenticator(user) == 0)
+    if (azure_authenticator(pamh, user) == 0)
         return PAM_SUCCESS;
-
     return ret;
 }
 
-PAM_EXTERN int pam_sm_setcred(pam_handle_t * pamh, int flags,
-                              int argc, const char **argv)
+PAM_EXTERN int pam_sm_setcred(pam_handle_t * pamh,
+                              int flags, int argc, const char **argv)
 {
     return PAM_SUCCESS;
 }
 
-PAM_EXTERN int pam_sm_acct_mgmt(pam_handle_t * pamh, int flags,
+PAM_EXTERN int pam_sm_acct_mgmt(pam_handle_t *
+                                pamh, int flags,
                                 int argc, const char **argv)
 {
     return PAM_SUCCESS;
