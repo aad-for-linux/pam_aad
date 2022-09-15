@@ -52,6 +52,8 @@ Create the file ```/etc/pam_aad.conf``` and fill it with:
 }
 ```
 
+**NOTE: Removing the `smtp_server` parameter will cause pam_aad to display the device code directly back to the user instead of sending an email.**
+
 1) Azure:
 
 - Login to the [Microsoft Azure Portal](portal.azure.com).
