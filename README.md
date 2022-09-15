@@ -9,7 +9,7 @@ _Azure Active Directory PAM Module._
 
 ```
 ./bootstrap.sh
-./configure --with-pam-dir=/lib/x86_64-linux-gnu/security/
+./configure
 make
 sudo make install
 ```
@@ -35,7 +35,6 @@ Create the file ```/etc/pam_aad.conf``` and fill it with:
   "group": {
     "id": "{{group_id}}"
   },
-  "smtp_server": "{{smtp_server}}",
   "tenant": {
     "name": "{{organization}}.onmicrosoft.com",
     "address": "{{organization_email_address}}"
@@ -50,4 +49,6 @@ Create the file ```/etc/pam_aad.conf``` and fill it with:
 ## See also
 
 - https://github.com/google/google-authenticator-libpam
+
 - https://github.com/quarxConnect/pam_oauth2
+
