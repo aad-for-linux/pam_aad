@@ -20,6 +20,8 @@ jobs:
             image: ghcr.io/aad-for-linux/pam_aad:ubuntu
             run: |
               cd work
-              pwd
-              make  
+              ./bootstrap.sh
+              ./configure --with-pam-dir=/lib/x86_64-linux-gnu/security/
+              make
+              sudo make install
               ls
