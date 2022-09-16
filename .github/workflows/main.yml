@@ -1,4 +1,5 @@
-name: CI
+name: build
+
 on:
  push:
    branches: [ master ]
@@ -6,22 +7,17 @@ on:
    branches: [ master ]
 
 jobs:
-  
-              
-  volume-test-job:
+  build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - uses: addnab/docker-run-action@v3
         with: 
-            options: -v ${{ github.workspace }}:/work -e ABC=123
+            options: -v ${{ github.workspace }}:/usr/src/pam_aad
             image: ghcr.io/aad-for-linux/pam_aad:ubuntu
             run: |
-              cd work
+              cd /usr/src/pam_aad
               ./bootstrap.sh
-              ./configure --with-pam-dir=/lib/x86_64-linux-gnu/security/
+              ./configure
               make
-              make install
-              ls
