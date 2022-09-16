@@ -12,7 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: addnab/docker-run-action@v3
+      - name: ubuntu
+        uses: addnab/docker-run-action@v3
         with: 
             options: -v ${{ github.workspace }}:/usr/src/pam_aad
             image: ghcr.io/aad-for-linux/pam_aad:ubuntu
@@ -21,7 +22,8 @@ jobs:
               ./bootstrap.sh
               ./configure
               make
-      - uses: addnab/docker-run-action@v3
+      - name: alpine
+        uses: addnab/docker-run-action@v3
         with: 
             options: -v ${{ github.workspace }}:/usr/src/pam_aad
             image: ghcr.io/aad-for-linux/pam_aad:alpine
