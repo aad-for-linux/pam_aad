@@ -23,5 +23,5 @@ jobs:
               ./bootstrap.sh
               ./configure --with-pam-dir=/lib/x86_64-linux-gnu/security/
               make
-              sudo make install
+              make install
               ls
