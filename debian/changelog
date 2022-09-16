@@ -1,3 +1,9 @@
+pam-aad (0.0.5-1) UNRELEASED; urgency=medium
+
+  * Show device code directly if smtp_server not present
+
+ -- Lucas Ramage <lucas.ramage@infinite-omicron.com>  Thu, 15 Sep 2022 09:41:56 +0000
+
 pam-aad (0.0.4-1) UNRELEASED; urgency=medium
 
   * Add Sign-in URL to email notification
@@ -21,3 +27,4 @@ pam-aad (0.0.1-1) UNRELEASED; urgency=medium
   * Initial release.
 
  -- Lucas Ramage <lramage@cyberninjas.com>  Mon, 06 May 2019 19:15:25 +0000
+

@@ -7,3 +7,4 @@ dlopentest:
 
 dlopen: dlopentest
 	./dlopentest "${PAMDIR}/pam_aad.so"
+

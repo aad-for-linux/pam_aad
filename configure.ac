@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.65])
-AC_INIT([pam_aad], [0.0.4], [ramage.lucas@protonmail.com])
+AC_INIT([pam_aad], [0.0.5], [open.source@infinite-omicron.com])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CANONICAL_HOST
