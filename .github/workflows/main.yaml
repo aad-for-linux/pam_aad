@@ -21,4 +21,12 @@ jobs:
               ./bootstrap.sh
               ./configure
               make
-
+      - uses: addnab/docker-run-action@v3
+        with: 
+            options: -v ${{ github.workspace }}:/usr/src/pam_aad
+            image: ghcr.io/aad-for-linux/pam_aad:alpine
+            run: |
+              cd /usr/src/pam_aad
+              ./bootstrap.sh
+              ./configure
+              make
