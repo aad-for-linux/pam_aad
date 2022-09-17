@@ -8,25 +8,19 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        os: [alpine, debian, rocky, ubuntu]
+
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: ubuntu
+      - name: ${{ matrix.os }}
         uses: addnab/docker-run-action@v3
         with: 
             options: -v ${{ github.workspace }}:/usr/src/pam_aad
-            image: ghcr.io/aad-for-linux/pam_aad:ubuntu
-            run: |
-              cd /usr/src/pam_aad
-              ./bootstrap.sh
-              ./configure
-              make
-      - name: alpine
-        uses: addnab/docker-run-action@v3
-        with: 
-            options: -v ${{ github.workspace }}:/usr/src/pam_aad
-            image: ghcr.io/aad-for-linux/pam_aad:alpine
+            image: ghcr.io/aad-for-linux/pam_aad:${{ matrix.os }}
             run: |
               cd /usr/src/pam_aad
               ./bootstrap.sh
